@@ -59,7 +59,7 @@ const usuarios = [
 },
 ]
 
-app.get('/', function (req, res) { //endereco da requisicao onde e retornado hello world
+app.get('/api/v1/usuarios', function (req, res) { //endereco da requisicao onde e retornado hello world
   res.send(usuarios)
 })
 
