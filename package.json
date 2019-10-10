@@ -1,0 +1,26 @@
+{
+  "name": "gui",
+  "version": "1.0.0",
+  "description": "A atividade consiste no consumo de uma API, para o desenvolvimento de uma aplicação front-end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yago-ferreira/gui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yago-ferreira/gui/issues"
+  },
+  "homepage": "https://github.com/yago-ferreira/gui#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
