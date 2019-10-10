@@ -1,5 +1,6 @@
 const express = require('express') //importacao do pacote
 const app = express() //instanciando express
+const cors = require('cors')
 
 const usuarios = [
   {
@@ -58,6 +59,8 @@ const usuarios = [
     senha: '989898'
 },
 ]
+
+app.use(cors()) //habilitando cors na nossa aplicacao
 
 app.get('/api/v1/usuarios', function (req, res) { //endereco da requisicao onde e retornado hello world
   res.send(usuarios)
