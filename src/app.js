@@ -2,6 +2,8 @@ const express = require('express') //importacao do pacote
 const app = express() //instanciando express
 const cors = require('cors')
 
+
+
 const usuarios = [
   {
 

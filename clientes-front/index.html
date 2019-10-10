@@ -7,23 +7,27 @@
   <title>Usuarios Front</title>
 </head>
 <body>
-    <h1>Lista de usuarios estático</h1>
-    <ul>
-        <ol>Nome: Cliente 1</ol>
-        <ol>Nome: Cliente 2</ol>
-        <ol>Nome: Cliente 3</ol>
-        <ol>Nome: Cliente 4</ol>
-        <ol>Nome: Cliente 5</ol>
-        <ol>Nome: Cliente 6</ol>
-        <ol>Nome: Cliente 7</ol>
-        <ol>Nome: Cliente 8</ol>
-    </ul>
+<h1>Lista de usuarios estático.</h1>
+ <table border="1">
+<tr>
+    <th>Nome</th>
+</tr>
+<td id="usuarios">  
+</td>  
+</table>
+</body>   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 <script>
     axios.get('http://localhost:3000/api/v1/usuarios')
-    .then(response => console.log(response))
+    .then(response => criaListaDinamica(response.data))
     .catch(error => console.log(error))
+    const criaListaDinamica =( usuarios ) => {
+        const td = document.getElementById('usuarios')
+        usuarios.map(usuarios => {
+            const listaUsuarios = document.createElement('li')
+            listaUsuarios.innerHTML = `${usuarios.nome}`
+            td.appendChild(listaUsuarios)
+        })
+        }    
 </script>  
-
-</body>
 </html>
