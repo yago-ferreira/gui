@@ -4,6 +4,7 @@
   "description": "A atividade consiste no consumo de uma API, para o desenvolvimento de uma aplicação front-end",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
