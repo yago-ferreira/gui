@@ -11,23 +11,43 @@
  <table border="1">
 <tr>
     <th>Nome</th>
+    <th>E-mail</th>
 </tr>
-<td id="usuarios">  
-</td>  
+<tr id="usuarios">
+<!---- <td id="usuarios"></td> -->
+</tr>
+
+<!--Button-->
+  
 </table>
 </body>   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 <script>
+   
     axios.get('http://localhost:3000/api/v1/usuarios')
     .then(response => criaListaDinamica(response.data))
     .catch(error => console.log(error))
     const criaListaDinamica =( usuarios ) => {
         const td = document.getElementById('usuarios')
         usuarios.map(usuarios => {
-            const listaUsuarios = document.createElement('li')
-            listaUsuarios.innerHTML = `${usuarios.nome}`
+            const listaUsuarios = document.createElement('tr')
+            listaUsuarios.innerHTML = ` ${usuarios.nome}`
             td.appendChild(listaUsuarios)
         })
-        }    
+        }
+
+        axios.get('http://localhost:3000/api/v1/usuarios')
+         .then(response => criaListaDinamica1(response.data))
+        .catch(error => console.log(error))
+        
+        const criaListaDinamica1 =( usuarios ) => {
+        const td = document.getElementById('usuarios')
+        usuarios.map(usuarios => {
+            const listaUsuarios = document.createElement('li')
+            listaUsuarios.innerHTML = ` ${usuarios.email}`
+            td.appendChild(listaUsuarios)
+        })
+        } 
+        
 </script>  
 </html>

@@ -64,7 +64,7 @@ const usuarios = [
 
 app.use(cors()) //habilitando cors na nossa aplicacao
 
-app.get('/api/v1/usuarios', function (req, res) { //endereco da requisicao onde e retornado hello world
+app.get('/api/v1/outros', function (req, res) { //endereco da requisicao onde e retornado a tela
   res.send(usuarios)
 })
 
