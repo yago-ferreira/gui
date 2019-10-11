@@ -2,7 +2,7 @@ const express = require('express') //importacao do pacote
 const app = express() //instanciando express
 const cors = require('cors')
 
-
+response.writeHead (200, {'Content-Type': 'text / html'});
 
 const usuarios = [
   {
@@ -64,7 +64,7 @@ const usuarios = [
 
 app.use(cors()) //habilitando cors na nossa aplicacao
 
-app.get('/api/v1/outros', function (req, res) { //endereco da requisicao onde e retornado a tela
+app.get('/api/v1/usuarios', function (req, res) { //endereco da requisicao onde e retornado a tela
   res.send(usuarios)
 })
 
