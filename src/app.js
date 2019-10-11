@@ -2,7 +2,6 @@ const express = require('express') //importacao do pacote
 const app = express() //instanciando express
 const cors = require('cors')
 
-response.writeHead (200, {'Content-Type': 'text / html'});
 
 const usuarios = [
   {
