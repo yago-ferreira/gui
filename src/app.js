@@ -3,11 +3,12 @@ const app = express() //instanciando express
 const cors = require('cors')
 
 
+/*
 const usuarios = [
   {
 
     id: '1U8vQDf63ahS4VWAWlei',
-    nome: 'Maria',
+    nome: 'Maria1',
     email: 'maria@teste.com',
     senha: '123321'
   },
@@ -60,7 +61,7 @@ const usuarios = [
     senha: '989898'
 },
 ]
-
+*/
 app.use(cors()) //habilitando cors na nossa aplicacao
 
 app.get('/api/v1/usuarios', function (req, res) { //endereco da requisicao onde e retornado a tela
