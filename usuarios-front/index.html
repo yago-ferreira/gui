@@ -13,7 +13,7 @@
     <th>Nome</th>
     <th>E-mail</th>
 </tr>
-<tr id="usuarios">
+<tr id="oi">
 <!---- <td id="usuarios"></td> -->
 </tr>
 
@@ -24,18 +24,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 <script>
    
-    axios.get('http://localhost:3000/api/v1/usuarios')
-    .then(response => criaListaDinamica(response.data))
+
+        axios.get('https://us-central1-prova-korok.cloudfunctions.net/api/users')
+    .then(response => criaListaDinamicaApi(response.data))
     .catch(error => console.log(error))
-    const criaListaDinamica =( usuarios ) => {
-        const tr = document.getElementById('usuarios')
-        usuarios.map(usuarios => {
-            const listaUsuarios = document.createElement('tr')
-            listaUsuarios.innerHTML = ` ${usuarios.nome}`
-            tr.appendChild(listaUsuarios)
+    const ccriaListaDinamicaApi =( oi ) => {
+        const tr = document.getElementById('oi')
+        oi.map(oi => {
+            const listaOi = document.createElement('li')
+            listaOi.innerHTML = ` ${oi.nome}`
+            tr.appendChild(listaOi)
         })
         }
-        /*
+
+
+
+        /* TESTE EMAIL
         axios.get('http://localhost:3000/api/v1/usuarios')
          .then(response => criaListaDinamica1(response.data))
         .catch(error => console.log(error))
