@@ -153,7 +153,7 @@
     var settings = {
       "async": false,
       "crossDomain": true,
-      "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/v6ARS7XASsvXmLZ4ywYw",
+      "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/"+id,
       "method": "PUT",
       "headers": {
         "Content-Type": "application/json",
@@ -168,8 +168,9 @@
     $.ajax(settings).done(function (response) {
       console.log(response);
     });
-    console.log(senha, email, nome, id)
-      ;
+    console.log(senha, email, nome, id);
+    alert('Salvo com sucesso !')
+      
 
   }
   function aparecePainel(){
