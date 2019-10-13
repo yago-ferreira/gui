@@ -89,7 +89,7 @@
    //-->
 
   <!-- Modal -->
-  <div class="modal fade" id="`tdBtnEditar${edit_User}`" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -179,12 +179,15 @@
 
       //button editar
       const tdBtnEditar = document.createElement('td')
-       tdBtnEditar.setAttribute('onclick',"setId('"+`${usuario.id}`+"')")
+        tdBtnEditar.setAttribute('onclick',"setId('"+`${usuario.id}`+"')")
+        tdBtnEditar.setAttribute('data-target',"#modalEditar")
+       tdBtnEditar.setAttribute('data-toggle',"modal")
        const btnEditar = document.createElement('button')
        btnEditar.style = "background: SteelBlue;"
 
       btnEditar.innerHTML = 'Editar'
       tdBtnEditar.appendChild(btnEditar)
+
       tr.appendChild(tdBtnEditar)
 
       //button excluir
@@ -222,7 +225,7 @@
   }
 
  //Atualiza as informações do usuário indicado pela ID. contendo o nome, o email e a senha do usuário.
-  function edit_User(id, email, nome, senha) {
+  function edit_User(id, nome,email, senha) {
     var settings = {
       "async": false,
       "crossDomain": true,
@@ -242,7 +245,7 @@
       console.log(response);
     });
     console.log(senha, email, nome, id);
-    alert('Salvo com sucesso !')
+    window.location.reload();
       
 
   }
