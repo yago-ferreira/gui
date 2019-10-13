@@ -1,8 +1,15 @@
 
-#painelEdit{
-    display: none;
-}
+
 
 #painelCreate{
      display: none; 
+}
+
+#btnAdicionar{
+    position: absolute;
+     right: 130px;
+     top: 15px;
+}
+#btnModal{
+
 }

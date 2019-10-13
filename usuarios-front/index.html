@@ -15,10 +15,40 @@
 
 <body>
 <div class="container">
+  
   <h1>Lista de usuários.</h1>
+
+
+  <button id=btnAdicionar type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
+   onclick="aparecePainel()">Adicionar Novo Usuário</button>
+     <!-- Painel de criar usuários -->
+  <form>
+      <div id=painelCreate class="form-row">
+      <div class="form-group col-md-6">
+        <legend>Criar um novo usuário: </legend>
+        <div class="row">
+        <div class="col">
+        <input id="nome1" type="text" class="form-control" placeholder="Nome">
+        </div>
+        </div>
+        <label for="inputEmail4 ">Email</label>
+        <input  type="email" class="form-control" id="email1" placeholder="Email">
+      </div>
+      <div class="form-group col-md-6">
+          <label for="inputPassword4">Senha</label>
+          <input type="password" class="form-control" id="senha1" placeholder="Password">
+        </div>
+        <button onclick="addUser(document.getElementById('nome1').value,document.getElementById('email1').value,
+        document.getElementById('senha1').value)"
+        type="submit" class="btn btn-primary">Confirmar</button>
+      </div>
+    </form>
+      <br>
+
+    <!-- Tabela de usuários-->
   <table border="1"class="table">
     <thead>
-      <tr>
+      <tr class="thead-dark">
         <th>Nome</th>
         <th>E-mail</th>
         <th>Editar</th>
@@ -26,32 +56,65 @@
       </tr>
     </thead>
     <tbody id="tabela-usuario">
-      <form>
-        <fieldset id=painelEdit>
-          <legend>Editar Usuários</legend>
-          Nome: <input id="nome" type="text"><br>
-          Email: <input id="email" type="text"><br>
-          Senha: <input id="senha" type="password">
-          <button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
-                    document.getElementById('senha').value)">Salvar</button>
-        </fieldset>
-      </form>
+
     </tbody>
 
   </table>
-    <!-- Painel de criar usuários -->
-  <button onclick="aparecePainel()">Adicionar Novo Usuário</button>
-  <form>
-    <fieldset id=painelCreate>
-      <legend>Editar Usuários</legend>
+      
+
+    <!-- Painel de criar usuário antigo
       Nome: <input id="nome1" type="text"><br>
       Email: <input id="email1" type="text"><br>
       Senha: <input id="senha1" type="password">
       
       <button onclick="addUser(document.getElementById('nome1').value,document.getElementById('email1').value,
                 document.getElementById('senha1').value)">Criar</button>
-    </fieldset>
-  </form>
+                -->
+  <!--Painel antigo de editar usuários
+  <form>
+      <fieldset id=painelEdit>
+        <legend>Alterar informações do usuário: </legend>
+        Nome: <input id="nome" type="text"><br>
+        Email: <input id="email" type="text"><br>
+        Senha: <input id="senha" type="password">
+        <button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
+                  document.getElementById('senha').value)">Salvar</button>
+      </fieldset>
+    </form>
+    //-->
+<!-- Botão para acionar modal editar
+<button id=btnModal type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar">
+    Abrir modal de demonstração
+  </button>
+   //-->
+
+  <!-- Modal -->
+  <div class="modal fade" id="`tdBtnEditar${edit_User}`" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="TituloModalCentralizado">Alterar informações do usuário</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+            Nome: <input id="nome" type="text"><br>
+        Email: <input id="email" type="text"><br>
+        Senha: <input id="senha" type="password">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
+          document.getElementById('senha').value)" type="button" class="btn btn-primary">Salvar mudanças</button>
+
+        </div>
+      </div>
+    </div>
+  </div>  
+
+  <!--Div fechando container-->
 </div>
 
 
@@ -113,11 +176,12 @@
       var teste = 'testevariavel'
 
       //criando os botões editar e excluir
-      //button editar
 
+      //button editar
       const tdBtnEditar = document.createElement('td')
        tdBtnEditar.setAttribute('onclick',"setId('"+`${usuario.id}`+"')")
        const btnEditar = document.createElement('button')
+       btnEditar.style = "background: SteelBlue;"
 
       btnEditar.innerHTML = 'Editar'
       tdBtnEditar.appendChild(btnEditar)
@@ -127,18 +191,22 @@
       const tdBtnExcluir = document.createElement('td')
       tdBtnExcluir.setAttribute('onclick',"deletUser('"+`${usuario.id}`+"')")
       const btnExcluir = document.createElement('button')
+      btnExcluir.style = "background: Tomato;"
+  
 
-      btnExcluir.innerHTML = 'Excluir'
+
+      btnExcluir.innerHTML = 'Apagar'
       tdBtnExcluir.appendChild(btnExcluir)
       tr.appendChild(tdBtnExcluir)
       
 
       //fechando a tabela 
       tabela.appendChild(tr)
+
+      //incrementando ID
       x++
     })
   }
-
 
 
 
@@ -149,10 +217,11 @@
  
   function setId(Id) {
     Id1 = Id;
-    document.getElementById("painelEdit").style.display = 'block';
-
+  //  document.getElementById("painelEdit");
+    document.getElementById("tdBtnEditar");
   }
- 
+
+ //Atualiza as informações do usuário indicado pela ID. contendo o nome, o email e a senha do usuário.
   function edit_User(id, email, nome, senha) {
     var settings = {
       "async": false,
@@ -180,6 +249,8 @@
   function aparecePainel(){
     document.getElementById("painelCreate").style.display='block';
   }
+
+//Insere um usuário no banco de dados
 function addUser(nome,email,senha){
 
   var settings = {
@@ -192,22 +263,27 @@ function addUser(nome,email,senha){
     "Accept": "/",
     "Cache-Control": "no-cache",
    
-    "Host": "us-central1-prova-korok.cloudfunctions.net",
-    "Accept-Encoding": "gzip, deflate",
-    "Content-Length": "100",
-    "Connection": "keep-alive",
+    // "Host": "us-central1-prova-korok.cloudfunctions.net",
+    // "Accept-Encoding": "gzip, deflate",
+    // "Content-Length": "100",
+    // "Connection": "keep-alive",
     "cache-control": "no-cache"
   },
   "processData": false,
   "data": " {\r\n         \"senha\": \""+senha+"\",\r\n        \"email\": \""+email+"\",\r\n        \"nome\": \""+nome+"\"\r\n    }"
+
 }
 
 $.ajax(settings).done(function (response) {
   console.log(response);
 });
+
+  
 }
 
+//FALTA CRIAR E CHAMAR
 // Descrição: Retorna um objeto contendo o usuário da id indicada.
+/*    
 function procurarId(id){
 var settings = {
   "async": true,
@@ -230,7 +306,9 @@ var settings = {
 $.ajax(settings).done(function (response) {
   console.log(response);
 });
-
+}
+*/
+//Deleta o usuário indicado pela ID.
   function deletUser(id){
   var settings = {
   "async": false,
