@@ -7,20 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Bootstrap 4.0 CSS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">
 
   <title>Usuarios Front</title>
 </head>
 
 <body>
-
+<div class="container">
   <h1>Lista de usuários.</h1>
-  <table border="1">
+  <table border="1"class="table">
     <thead>
       <tr>
         <th>Nome</th>
         <th>E-mail</th>
-        <th>Ações</th>
+        <th>Editar</th>
+        <th>Excluir</th>
       </tr>
     </thead>
     <tbody id="tabela-usuario">
@@ -37,18 +39,20 @@
     </tbody>
 
   </table>
-  <form>
+    <!-- Painel de criar usuários -->
   <button onclick="aparecePainel()">Adicionar Novo Usuário</button>
+  <form>
     <fieldset id=painelCreate>
       <legend>Editar Usuários</legend>
       Nome: <input id="nome1" type="text"><br>
       Email: <input id="email1" type="text"><br>
       Senha: <input id="senha1" type="password">
+      
       <button onclick="addUser(document.getElementById('nome1').value,document.getElementById('email1').value,
                 document.getElementById('senha1').value)">Criar</button>
     </fieldset>
- 
-
+  </form>
+</div>
 
 
 
@@ -56,7 +60,7 @@
 
   <!-- jQuery-->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 
@@ -182,6 +186,7 @@ function addUser(nome,email,senha){
   "async": false,
   "crossDomain": true,
   "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/",
+  "method": "POST",
   "headers": {
     "Content-Type": "application/json",
     "Accept": "/",
@@ -194,7 +199,7 @@ function addUser(nome,email,senha){
     "cache-control": "no-cache"
   },
   "processData": false,
-  "data": " {\r\n         \"senha\": \""+senha+"\",\r\n        \"email\": \""+ email +"\",\r\n        \"nome\": \""+nome+"\"\r\n    }"
+  "data": " {\r\n         \"senha\": \""+senha+"\",\r\n        \"email\": \""+email+"\",\r\n        \"nome\": \""+nome+"\"\r\n    }"
 }
 
 $.ajax(settings).done(function (response) {
@@ -202,6 +207,29 @@ $.ajax(settings).done(function (response) {
 });
 }
 
+// Descrição: Retorna um objeto contendo o usuário da id indicada.
+function procurarId(id){
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/1U8vQDf63ahS4VWAWlei",
+  "method": "GET",
+  "headers": {
+    "Content-Type": "application/json",
+    "Accept": "/",
+    "Cache-Control": "no-cache",
+    "Host": "us-central1-prova-korok.cloudfunctions.net",
+    "Accept-Encoding": "gzip, deflate",
+    "Connection": "keep-alive",
+    "cache-control": "no-cache"
+  },
+  "processData": false,
+  "data": ""
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
 
   function deletUser(id){
   var settings = {
