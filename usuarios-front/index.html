@@ -1,176 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Bootstrap 4.0 CSS-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
   <title>Usuarios Front</title>
 </head>
+
 <body>
-    
-<h1>Lista de usuarios.</h1>
- <table border="1">
-     <thead>
-        <tr>
-            <th>Nome</th>
-            <th>E-mail</th>
-            <th>Ações</th>
-        </tr>
-     </thead>
-     <tbody  id="tabela-usuario">
 
-     </tbody>
+  <h1>Lista de usuários.</h1>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>E-mail</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="tabela-usuario">
+      <form>
+        <fieldset id=painelEdit>
+          <legend>Editar Usuários</legend>
+          Nome: <input id="nome" type="text"><br>
+          Email: <input id="email" type="text"><br>
+          Senha: <input id="senha" type="password">
+          <button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
+                    document.getElementById('senha').value)">Salvar</button>
+        </fieldset>
+      </form>
+    </tbody>
 
-  
-</table><label>Nome:</label>
-<input id="nome">
-<label>Email:</label>
-<input id="email">
-<label>Senha:</label>
-<input id="Senha">
-<button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
-document.getElementById('Senha').value)">Enviar</button>
+  </table>
+  <form>
+  <button onclick="aparecePainel()">Adicionar Novo Usuário</button>
+    <fieldset id=painelCreate>
+      <legend>Editar Usuários</legend>
+      Nome: <input id="nome1" type="text"><br>
+      Email: <input id="email1" type="text"><br>
+      Senha: <input id="senha1" type="password">
+      <button onclick="addUser(document.getElementById('nome1').value,document.getElementById('email1').value,
+                document.getElementById('senha1').value)">Criar</button>
+    </fieldset>
+ 
 
-</body>   
-<style type="text/css">
-#tdId{
-    display:none;
-    
-}
-#Senha{
-    display:none;
-}
-</style>
+
+
+
+
+
+  <!-- jQuery-->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+</body>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 <script>
-   var x=0
+  var x = 0
 
-    axios.get('https://us-central1-prova-korok.cloudfunctions.net/api/users')
-        .then(response => criaListaDinamicaApi(response.data))
-        .catch(error => console.log(error))
-    
-    const criaListaDinamicaApi = ( listaUsuarios ) => {
-        console.log('Listagem de usuarios => ', listaUsuarios) 
+  axios.get('https://us-central1-prova-korok.cloudfunctions.net/api/users')
+    .then(response => criaListaDinamicaApi(response.data))
+    .catch(error => console.log(error))
 
-        const tabela = document.getElementById('tabela-usuario')
-        listaUsuarios.map( usuario => {
-            //A cada iteração é criado uma row (tr) e nessa row tem 3 elementos (td) 
-            //cada td é referente ao nome, email e os botoes por isso o codigo se repete na parte de criação de td
-            //Todos os td são inseridos n tr e no final da iteração ele é inserido na tabela, isso será repetido conforme
-            // a quantidade de usuários que a api ta retornando
+  const criaListaDinamicaApi = (listaUsuarios) => {
+    console.log('Listagem de usuarios => ', listaUsuarios)
+
+    const tabela = document.getElementById('tabela-usuario')
+    listaUsuarios.map(usuario => {
+      //A cada iteração é criado uma row (tr) e nessa row tem 3 elementos (td) 
+      //cada td é referente ao nome, email e os botoes por isso o codigo se repete na parte de criação de td
+      //Todos os td são inseridos n tr e no final da iteração ele é inserido na tabela, isso será repetido conforme
+      // a quantidade de usuários que a api ta retornando
 
 
-            const tr = document.createElement('tr')
-            const td = document.createElement('td')
-            const p = document.createElement('p')
-            
-            // exibindo nome da API
-            p.innerHTML = ` ${usuario.nome}`
-            td.appendChild(p)
-            tr.appendChild(td)
-            
-            const tdEmail = document.createElement('td')
-            const pEmail = document.createElement('p')
-            
-            //exibindo email da API
-            pEmail.innerHTML = ` ${usuario.email}`
-            tdEmail.appendChild(pEmail)
-            tr.appendChild(tdEmail)
+      const tr = document.createElement('tr')
+      const td = document.createElement('td')
+      const p = document.createElement('p')
 
-            //exibindo ID
-            const tdId = document.createElement('td')
-            tdId.style.display='none';
-            const pId = document.createElement('p')
-            pId.setAttribute('id', 'Id_User'+x)
-            pId.style.display='none';
-           
+      // exibindo nome da API
+      p.innerHTML = ` ${usuario.nome}`
+      td.appendChild(p)
+      tr.appendChild(td)
+
+      const tdEmail = document.createElement('td')
+      const pEmail = document.createElement('p')
+
+      //exibindo email da API
+      pEmail.innerHTML = ` ${usuario.email}`
+      tdEmail.appendChild(pEmail)
+      tr.appendChild(tdEmail)
+
+      //exibindo ID
+      const tdId = document.createElement('td')
+      tdId.style.display = 'none';
+      const pId = document.createElement('p')
+      pId.setAttribute('id', 'Id_User' + x)
+      pId.style.display = 'none';
+
+      pId.innerHTML = ` ${usuario.id}`
+      tdId.appendChild(pId)
+      tr.appendChild(tdId)
+      var teste = 'testevariavel'
+
+      //criando os botões editar e excluir
+      //button editar
+
+      const tdBtnEditar = document.createElement('td')
+       tdBtnEditar.setAttribute('onclick',"setId('"+`${usuario.id}`+"')")
+       const btnEditar = document.createElement('button')
+
+      btnEditar.innerHTML = 'Editar'
+      tdBtnEditar.appendChild(btnEditar)
+      tr.appendChild(tdBtnEditar)
+
+      //button excluir
+      const tdBtnExcluir = document.createElement('td')
+      tdBtnExcluir.setAttribute('onclick',"deletUser('"+`${usuario.id}`+"')")
+      const btnExcluir = document.createElement('button')
+
+      btnExcluir.innerHTML = 'Excluir'
+      tdBtnExcluir.appendChild(btnExcluir)
+      tr.appendChild(tdBtnExcluir)
       
 
-            pId.innerHTML = ` ${usuario.id}`
-            tdId.appendChild(pId)
-            tr.appendChild(tdId)
-            var teste='testevariavel'
-
-            //criando os botões editar e excluir
-            //button editar
-            const tdBtnEditar = document.createElement('td')
-            tdBtnEditar.setAttribute('onclick',"setId('"+`${usuario.id}`+"')")
-            const btnEditar = document.createElement('button')
-            
-            btnEditar.innerHTML = 'Editar'
-            tdBtnEditar.appendChild(btnEditar)
-            tr.appendChild(tdBtnEditar)
-
-            //button excluir
-            const tdBtn = document.createElement('td')
-            const btn = document.createElement('button')
-            
-            btn.innerHTML = 'Excluir'
-            tdBtn.appendChild(btn)
-            tdBtnEditar.appendChild(tdBtn)
-
-            //fechando a tabela  fonte: http://www.linhadecodigo.com.br/artigo/3439/introducao-ao-html-usando-tabelas-em-html.aspx
-            tabela.appendChild(tr)
-            x++
-        })
-        }
-  
-
-        
+      //fechando a tabela 
+      tabela.appendChild(tr)
+      x++
+    })
+  }
 
 
-        /* Teste que fiz usando os dados usuarios que inserir manualmente no .js . Deu certo
-        axios.get('http://localhost:3000/api/v1/usuarios')
-         .then(response => criaListaDinamica1(response.data))
-        .catch(error => console.log(error))
-        
-        const criaListaDinamica1 =( usuarios ) => {
-        const td = document.getElementById('usuarios')
-        usuarios.map(usuarios => {
-            const listaUsuarios = document.createElement('li')
-            listaUsuarios.innerHTML = ` ${usuarios.email}`
-            td.appendChild(listaUsuarios)
-        })
-        } 
-        */
-        
-</script> 
- <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script> 
-  
+
+
+</script>
+
 <script type="text/javascript">
- var Id1;
-function setId(Id){
-    Id1=Id;
-    document.getElementById("Senha").style.display='block';
-  
-}
-function edit_User(id,email,nome,senha){
+  var Id1;
+ 
+  function setId(Id) {
+    Id1 = Id;
+    document.getElementById("painelEdit").style.display = 'block';
+
+  }
+ 
+  function edit_User(id, email, nome, senha) {
     var settings = {
-  "async": true,
+      "async": false,
+      "crossDomain": true,
+      "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/v6ARS7XASsvXmLZ4ywYw",
+      "method": "PUT",
+      "headers": {
+        "Content-Type": "application/json",
+        "cache-control": "no-cache",
+
+      },
+      "processData": false,
+      "data": "{\r\n       \r\n        \"email\": \"" + email + "\",\r\n        \"nome\": \"" + nome + "\",\r\n        \"senha\": \"" + senha + "\"\r\n    }"
+
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+    console.log(senha, email, nome, id)
+      ;
+
+  }
+  function aparecePainel(){
+    document.getElementById("painelCreate").style.display='block';
+  }
+function addUser(nome,email,senha){
+
+  var settings = {
+  "async": false,
   "crossDomain": true,
-  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/"+id,
-  "method": "PUT",
+  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/",
   "headers": {
     "Content-Type": "application/json",
-   
-    "Accept": "*/*",
+    "Accept": "/",
     "Cache-Control": "no-cache",
    
-   
+    "Host": "us-central1-prova-korok.cloudfunctions.net",
     "Accept-Encoding": "gzip, deflate",
-    "Content-Length": "109",
+    "Content-Length": "100",
     "Connection": "keep-alive",
     "cache-control": "no-cache"
   },
   "processData": false,
-  "data": "{\r\n       \r\n        \"email\": \""+email+"\",\r\n        \"nome\": \""+nome+"\",\r\n        \"senha\": \""+senha+"\"\r\n    }"
+  "data": " {\r\n         \"senha\": \""+senha+"\",\r\n        \"email\": \""+ email +"\",\r\n        \"nome\": \""+nome+"\"\r\n    }"
 }
 
 $.ajax(settings).done(function (response) {
   console.log(response);
 });
-
 }
 
-</script> 
+
+  function deletUser(id){
+  var settings = {
+  "async": false,
+  "crossDomain": true,
+  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/"+id,
+  "method": "DELETE",
+  "headers": {
+    "Content-Type": "application/json",
+    "Accept": "/",
+    "Cache-Control": "no-cache",
+    "Host": "us-central1-prova-korok.cloudfunctions.net",
+    "Accept-Encoding": "gzip, deflate",
+    "Content-Length": "0",
+    "Connection": "keep-alive",
+    "cache-control": "no-cache"
+  },
+  "processData": false,
+  "data": ""
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+
+  window.location.reload();
+  alert('Usuário excluido com sucesso')
+
+});
+}
+
+</script>
+
 </html>
