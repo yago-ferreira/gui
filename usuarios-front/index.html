@@ -55,40 +55,11 @@
         <th>Excluir</th>
       </tr>
     </thead>
-    <tbody id="tabela-usuario">
-
-    </tbody>
-
+      <tbody id="tabela-usuario">
+      </tbody>
   </table>
-      
 
-    <!-- Painel de criar usuário antigo
-      Nome: <input id="nome1" type="text"><br>
-      Email: <input id="email1" type="text"><br>
-      Senha: <input id="senha1" type="password">
-      
-      <button onclick="addUser(document.getElementById('nome1').value,document.getElementById('email1').value,
-                document.getElementById('senha1').value)">Criar</button>
-                -->
-  <!--Painel antigo de editar usuários
-  <form>
-      <fieldset id=painelEdit>
-        <legend>Alterar informações do usuário: </legend>
-        Nome: <input id="nome" type="text"><br>
-        Email: <input id="email" type="text"><br>
-        Senha: <input id="senha" type="password">
-        <button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
-                  document.getElementById('senha').value)">Salvar</button>
-      </fieldset>
-    </form>
-    //-->
-<!-- Botão para acionar modal editar
-<button id=btnModal type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditar">
-    Abrir modal de demonstração
-  </button>
-   //-->
-
-  <!-- Modal -->
+  <!-- Modal editar usuário -->
   <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
@@ -99,16 +70,16 @@
           </button>
         </div>
         <div class="modal-body">
-          
-            Nome: <input id="nome" type="text"><br>
-        Email: <input id="email" type="text"><br>
-        Senha: <input id="senha" type="password">
+       
+          Nome: <input id="nome" type="text"><br>
+          Email: <input id="email" type="text"><br>
+          Senha: <input id="senha" type="password">
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
           <button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
           document.getElementById('senha').value)" type="button" class="btn btn-primary">Salvar mudanças</button>
-
         </div>
       </div>
     </div>
@@ -117,17 +88,15 @@
   <!--Div fechando container-->
 </div>
 
-
-
-
-
-  <!-- jQuery-->
+  <!-- jQuery e Bootstrap-->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+<!-- script criando tabela //-->
 <script>
   var x = 0
 
@@ -210,10 +179,8 @@
       x++
     })
   }
-
-
-
 </script>
+
 
 <script type="text/javascript">
   var Id1;
