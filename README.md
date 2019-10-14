@@ -1,13 +1,42 @@
-# gui
-A atividade consiste no consumo de uma API, para o desenvolvimento de uma aplicação front-end
-Para executar o projeto, precisamos de dois terminais abertos, um apontando para a pasta usuarios-api e outro para usuarios-front.
+- A atividade consiste no consumo de uma API, para o desenvolvimento de uma aplicação front-end (GUI).
 
-caso for rodar a primeira vez a API, precisamos executar o npm install.
+Utilizei as tecnologias HTML,CSS,Bootstrap,node.js,Javascript, Jquery, Ajax para desenvolvimento desse projeto.
 
-Para rodar API, basta executar npm run dev
+Atividade:
 
-e para rodar o front, usamos o http-server no diretório usuarios-front
+1 - Construir uma tabela contendo as informações de todos os usuários.
 
-Ambos rodando simultaneamente.
+2 - No final de cada linha da tabela, deve haver dois botões:
 
-index.html se encontra na pasta usuarios-front.
+2.1.1 – Um botão para editar as informações referentes àquele usuário no banco de dados.
+
+2.1.2 – Ao clicar no botão de editar, um modal deve ser aberto, contendo as informações dos usuários em inputs editáveis, e um botão de salvar.
+
+2.2 – Um botão para deletar o usuário.
+
+3 – A GUI deve conter um botão para adição de um novo usuário no banco de dados.
+
+Documentação para consumo da API:
+
+
+URL: https://us-central1-prova-korok.cloudfunctions.net/api
+_____________________________________________________________________________
+//feito
+GET Usuários - https://us-central1-prova-korok.cloudfunctions.net/api/users
+Descrição: Retorna um array contendo todos os usuários cadastrados no banco de dados.
+_____________________________________________________________________________
+//não fiz ainda
+GET Usuário - https://us-central1-prova-korok.cloudfunctions.net/api/users/ID
+Descrição: Retorna um objeto contendo o usuário da id indicada.
+_____________________________________________________________________________
+//feito
+POST Usuário - https://us-central1-prova-korok.cloudfunctions.net/api/users
+Descrição: Insere um usuário no banco de dados. O corpo da requisição deve ser um objeto JSON, contendo o nome, o email e a senha do usuário.
+____________________________________________________________________________
+//feito
+PUT Usuário - https://us-central1-prova-korok.cloudfunctions.net/api/users/ID
+Descrição: Atualiza as informações do usuário indicado pela ID. O corpo da requisição deve ser um objeto JSON, contendo o nome, o email e a senha do usuário.
+_____________________________________________________________________________
+//feito
+DELETE Usuário - https://us-central1-prova-korok.cloudfunctions.net/api/users/ID
+Descrição: Deleta o usuário indicado pela ID.
