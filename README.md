@@ -1,9 +1,9 @@
 - A atividade consiste no consumo de uma API, para o desenvolvimento de uma aplicação front-end (GUI).
 
-Utilizei as tecnologias HTML,CSS,Bootstrap,node.js,Javascript, Jquery, Ajax para desenvolvimento desse projeto.
+Utilizei as tecnologias HTML,CSS,Bootstrap,node.js,Javascript, Jquery e Ajax para desenvolvimento desse projeto.
+
 
 Atividade:
-
 1 - Construir uma tabela contendo as informações de todos os usuários.
 
 2 - No final de cada linha da tabela, deve haver dois botões:
