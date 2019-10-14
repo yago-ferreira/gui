@@ -96,7 +96,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 
-<!-- script criando tabela //-->
+<!-- tabela contendo as informações de todos os usuários da API//-->
 <script>
   var x = 0
 
@@ -156,7 +156,6 @@
 
       btnEditar.innerHTML = 'Editar'
       tdBtnEditar.appendChild(btnEditar)
-
       tr.appendChild(tdBtnEditar)
 
       //button excluir
@@ -165,8 +164,6 @@
       const btnExcluir = document.createElement('button')
       btnExcluir.style = "background: Tomato;"
   
-
-
       btnExcluir.innerHTML = 'Apagar'
       tdBtnExcluir.appendChild(btnExcluir)
       tr.appendChild(tdBtnExcluir)
@@ -183,11 +180,11 @@
 
 
 <script type="text/javascript">
+
   var Id1;
- 
+
   function setId(Id) {
     Id1 = Id;
-  //  document.getElementById("painelEdit");
     document.getElementById("tdBtnEditar");
   }
 
@@ -214,7 +211,7 @@
     console.log(senha, email, nome, id);
     window.location.reload();
       
-
+//função que faz o painel de criar usuários aparecer 
   }
   function aparecePainel(){
     document.getElementById("painelCreate").style.display='block';
@@ -278,6 +275,7 @@ $.ajax(settings).done(function (response) {
 });
 }
 */
+
 //Deleta o usuário indicado pela ID.
   function deletUser(id){
   var settings = {
