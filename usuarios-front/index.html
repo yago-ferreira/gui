@@ -15,12 +15,21 @@
 
 <body>
 <div class="container">
-  
-  <h1>Lista de usuários.</h1>
 
+  <!-- Painel buscar usuário por id-->
+    <div id="divBusca">
+      <input type="text" id="txtBusca" placeholder="Buscar usuário..."/>
+      <button id="btnBusca" class="btn btn-primary btn-sm"
+      onclick="procurarId(` ${usuario.id}`)">Buscar</button>
+    </div>
 
+  <!-- botão adicionar usuário-->
   <button id=btnAdicionar type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
    onclick="aparecePainel()">Adicionar Novo Usuário</button>
+
+     <!-- Titulo --> 
+  <h1>Lista de usuários.</h1>
+
      <!-- Painel de criar usuários -->
   <form>
       <div id=painelCreate class="form-row">
@@ -250,20 +259,20 @@ $.ajax(settings).done(function (response) {
 
 //FALTA CRIAR E CHAMAR
 // Descrição: Retorna um objeto contendo o usuário da id indicada.
-/*    
+ 
 function procurarId(id){
 var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/1U8vQDf63ahS4VWAWlei",
+  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/"+id,
   "method": "GET",
   "headers": {
     "Content-Type": "application/json",
     "Accept": "/",
     "Cache-Control": "no-cache",
-    "Host": "us-central1-prova-korok.cloudfunctions.net",
-    "Accept-Encoding": "gzip, deflate",
-    "Connection": "keep-alive",
+//    "Host": "us-central1-prova-korok.cloudfunctions.net",
+ //   "Accept-Encoding": "gzip, deflate",
+ //   "Connection": "keep-alive",
     "cache-control": "no-cache"
   },
   "processData": false,
@@ -274,7 +283,6 @@ $.ajax(settings).done(function (response) {
   console.log(response);
 });
 }
-*/
 
 //Deleta o usuário indicado pela ID.
   function deletUser(id){

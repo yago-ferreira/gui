@@ -5,6 +5,13 @@
 
 #btnAdicionar{
     position: absolute;
-     right: 130px;
-     top: 15px;
+     right: 127px;
+     top: 40px;
+}
+
+#divBusca{
+     position: absolute;
+
+     right: 500px;
+     top: 40px;
 }
