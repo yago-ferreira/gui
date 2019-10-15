@@ -21,22 +21,22 @@ Documentação para consumo da API:
 
 URL: https://us-central1-prova-korok.cloudfunctions.net/api
 _____________________________________________________________________________
-//feito
+
 GET Usuários - https://us-central1-prova-korok.cloudfunctions.net/api/users
 Descrição: Retorna um array contendo todos os usuários cadastrados no banco de dados.
 _____________________________________________________________________________
-//não fiz ainda
+
 GET Usuário - https://us-central1-prova-korok.cloudfunctions.net/api/users/ID
 Descrição: Retorna um objeto contendo o usuário da id indicada.
 _____________________________________________________________________________
-//feito
+
 POST Usuário - https://us-central1-prova-korok.cloudfunctions.net/api/users
 Descrição: Insere um usuário no banco de dados. O corpo da requisição deve ser um objeto JSON, contendo o nome, o email e a senha do usuário.
 ____________________________________________________________________________
-//feito
+
 PUT Usuário - https://us-central1-prova-korok.cloudfunctions.net/api/users/ID
 Descrição: Atualiza as informações do usuário indicado pela ID. O corpo da requisição deve ser um objeto JSON, contendo o nome, o email e a senha do usuário.
 _____________________________________________________________________________
-//feito
+
 DELETE Usuário - https://us-central1-prova-korok.cloudfunctions.net/api/users/ID
 Descrição: Deleta o usuário indicado pela ID.
