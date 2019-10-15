@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Bootstrap 4.0 CSS-->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">
 
   <title>Usuarios Front</title>
@@ -16,131 +17,131 @@
 <body>
 
 
-<div class="container">
-  <!-- Painel buscar usuário por id. Já funciona,retornando no console //-->
+  <div class="container">
+    <!-- Painel buscar usuário por id//-->
     <div id="divBusca">
-      <input type="text" id="txtBusca" placeholder="Digite o id do usuário..."/>
+      <input type="text" id="txtBusca" placeholder="Digite o id do usuário..." />
       <button id="btnBusca" class="btn btn-primary btn-sm"
-      onclick="procurarId(document.getElementById('txtBusca').value)" 
-      data-toggle="modal" data-target="#ModalBuscar"
-      >Buscar</button>
+        onclick="procurarId(document.getElementById('txtBusca').value)" data-toggle="modal"
+        data-target="#ModalBuscar">Buscar</button>
     </div>
-    
-<!-- Chamando modal da busca do usuário
+
+    <!-- Chamando modal da busca do usuário
  
   
   //-->
-<div class="modal fade" id="ModalBuscar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true" >
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">informações do usuário:</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Apresentando dados no Modal -->
-          <table class="table">
+    <div class="modal fade" id="ModalBuscar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado">informações do usuário:</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Apresentando dados no Modal -->
+            <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
                   <th scope="col">Nome</th>
                   <th scope="col">Email</th>
                 </tr>
               </thead>
-              <tbody id ="procurarId">
+              <tbody id="procurarId">
                 <tr>
-                  <th id=""  scope="row">1</th>
-                  <td id="" >test</td>
-                  <td id="">test@test</td>
+                  <td id="nome_busca"></td>
+                  <td id="email_busca"></td>
               </tbody>
             </table>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-  <!-- botão adicionar usuário-->
-  <button id=btnAdicionar type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
-   onclick="aparecePainel()">Adicionar Novo Usuário</button>
+    <!-- botão adicionar usuário-->
+    <button id=btnAdicionar type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
+      autocomplete="off" onclick="aparecePainel()">Adicionar Novo Usuário</button>
 
-     <!-- Titulo --> 
-  <h1>Lista de usuários.</h1>
+    <!-- Titulo -->
+    <h1>Lista de usuários.</h1>
 
-     <!-- Painel de criar usuários -->
-  <form>
+    <!-- Painel de criar usuários -->
+    <form>
       <div id=painelCreate class="form-row">
-      <div class="form-group col-md-6">
-        <legend>Criar um novo usuário: </legend>
-        <div class="row">
-        <div class="col">
-        <input id="nome1" type="text" class="form-control" placeholder="Nome">
+        <div class="form-group col-md-6">
+          <legend>Criar um novo usuário: </legend>
+          <div class="row">
+            <div class="col">
+              <input id="nome1" type="text" class="form-control" placeholder="Nome">
+            </div>
+          </div>
+          <label for="inputEmail4 ">Email</label>
+          <input type="email" class="form-control" id="email1" placeholder="Email">
         </div>
-        </div>
-        <label for="inputEmail4 ">Email</label>
-        <input  type="email" class="form-control" id="email1" placeholder="Email">
-      </div>
-      <div class="form-group col-md-6">
+        <div class="form-group col-md-6">
           <label for="inputPassword4">Senha</label>
           <input type="password" class="form-control" id="senha1" placeholder="Password">
         </div>
         <button onclick="addUser(document.getElementById('nome1').value,document.getElementById('email1').value,
-        document.getElementById('senha1').value)"
-        type="submit" class="btn btn-primary">Confirmar</button>
+        document.getElementById('senha1').value)" type="submit" class="btn btn-primary">Confirmar</button>
       </div>
     </form>
-      <br>
+    <br>
 
     <!-- Tabela de usuários-->
-  <table border="1"class="table">
-    <thead>
-      <tr class="thead-dark">
-        <th>Nome</th>
-        <th>E-mail</th>
-        <th>Editar</th>
-        <th>Excluir</th>
-      </tr>
-    </thead>
+    <table border="1" class="table">
+      <thead>
+        <tr class="thead-dark">
+          <th>Nome</th>
+          <th>E-mail</th>
+          <th>Editar</th>
+          <th>Excluir</th>
+        </tr>
+      </thead>
       <tbody id="tabela-usuario">
       </tbody>
-  </table>
+    </table>
 
-  <!-- Modal editar usuário -->
-  <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="TituloModalCentralizado">Alterar informações do usuário</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-       
-          Nome: <input id="nome" type="text"><br>
-          Email: <input id="email" type="text"><br>
-          Senha: <input id="senha" type="password">
+    <!-- Modal editar usuário -->
+    <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado">Alterar informações do usuário</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-          <button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
+            Nome: <input id="nome" type="text"><br>
+            Email: <input id="email" type="text"><br>
+            Senha: <input id="senha" type="password">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            <button onclick="edit_User(Id1, document.getElementById('nome').value,document.getElementById('email').value,
           document.getElementById('senha').value)" type="button" class="btn btn-primary">Salvar mudanças</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>  
 
-  <!--Div fechando container-->
-</div>
+    <!--Div fechando container-->
+  </div>
 
   <!-- jQuery e Bootstrap-->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
 </body>
 
@@ -198,11 +199,11 @@
 
       //button editar
       const tdBtnEditar = document.createElement('td')
-        tdBtnEditar.setAttribute('onclick',"setId('"+`${usuario.id}`+"')")
-        tdBtnEditar.setAttribute('data-target',"#modalEditar")
-       tdBtnEditar.setAttribute('data-toggle',"modal")
-       const btnEditar = document.createElement('button')
-       btnEditar.style = "background: SteelBlue;"
+      tdBtnEditar.setAttribute('onclick', "setId('" + `${usuario.id}` + "')")
+      tdBtnEditar.setAttribute('data-target', "#modalEditar")
+      tdBtnEditar.setAttribute('data-toggle', "modal")
+      const btnEditar = document.createElement('button')
+      btnEditar.style = "background: SteelBlue;"
 
       btnEditar.innerHTML = 'Editar'
       tdBtnEditar.appendChild(btnEditar)
@@ -210,14 +211,14 @@
 
       //button excluir
       const tdBtnExcluir = document.createElement('td')
-      tdBtnExcluir.setAttribute('onclick',"deletUser('"+`${usuario.id}`+"')")
+      tdBtnExcluir.setAttribute('onclick', "deletUser('" + `${usuario.id}` + "')")
       const btnExcluir = document.createElement('button')
       btnExcluir.style = "background: Tomato;"
-  
+
       btnExcluir.innerHTML = 'Apagar'
       tdBtnExcluir.appendChild(btnExcluir)
       tr.appendChild(tdBtnExcluir)
-      
+
 
       //fechando a tabela 
       tabela.appendChild(tr)
@@ -238,12 +239,12 @@
     document.getElementById("tdBtnEditar");
   }
 
- //Atualiza as informações do usuário indicado pela ID. contendo o nome, o email e a senha do usuário.
-  function edit_User(id, nome,email, senha) {
+  //Atualiza as informações do usuário indicado pela ID. contendo o nome, o email e a senha do usuário.
+  function edit_User(id, nome, email, senha) {
     var settings = {
       "async": false,
       "crossDomain": true,
-      "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/"+id,
+      "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/" + id,
       "method": "PUT",
       "headers": {
         "Content-Type": "application/json",
@@ -260,100 +261,100 @@
     });
     console.log(senha, email, nome, id);
     window.location.reload();
-      
-//função que faz o painel de criar usuários aparecer 
+
+    //função que faz o painel de criar usuários aparecer 
   }
-  function aparecePainel(){
-    document.getElementById("painelCreate").style.display='block';
+  function aparecePainel() {
+    document.getElementById("painelCreate").style.display = 'block';
   }
 
-//Insere um usuário no banco de dados
-function addUser(nome,email,senha){
+  //Insere um usuário no banco de dados
+  function addUser(nome, email, senha) {
 
-  var settings = {
-  "async": false,
-  "crossDomain": true,
-  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/",
-  "method": "POST",
-  "headers": {
-    "Content-Type": "application/json",
-    "Accept": "/",
-    "Cache-Control": "no-cache",
-   
-    // "Host": "us-central1-prova-korok.cloudfunctions.net",
-    // "Accept-Encoding": "gzip, deflate",
-    // "Content-Length": "100",
-    // "Connection": "keep-alive",
-    "cache-control": "no-cache"
-  },
-  "processData": false,
-  "data": " {\r\n         \"senha\": \""+senha+"\",\r\n        \"email\": \""+email+"\",\r\n        \"nome\": \""+nome+"\"\r\n    }"
+    var settings = {
+      "async": false,
+      "crossDomain": true,
+      "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "/",
+        "Cache-Control": "no-cache",
 
-}
+        // "Host": "us-central1-prova-korok.cloudfunctions.net",
+        // "Accept-Encoding": "gzip, deflate",
+        // "Content-Length": "100",
+        // "Connection": "keep-alive",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": " {\r\n         \"senha\": \"" + senha + "\",\r\n        \"email\": \"" + email + "\",\r\n        \"nome\": \"" + nome + "\"\r\n    }"
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+    }
 
-  
-}
-
-// Descrição: Retorna um objeto contendo o usuário da id indicada.
-function procurarId(id){
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/"+id,
-  "method": "GET",
-  "headers": {
-    "Content-Type": "application/json",
-    "Accept": "/",
-    "Cache-Control": "no-cache",
-//    "Host": "us-central1-prova-korok.cloudfunctions.net",
- //   "Accept-Encoding": "gzip, deflate",
- //   "Connection": "keep-alive",
-    "cache-control": "no-cache"
-  },
-  "processData": false,
-  "data": ""
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
 
 
-});
-}
+  }
 
-//Deleta o usuário indicado pela ID.
-  function deletUser(id){
-  var settings = {
-  "async": false,
-  "crossDomain": true,
-  "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/"+id,
-  "method": "DELETE",
-  "headers": {
-    "Content-Type": "application/json",
-    "Accept": "/",
-    "Cache-Control": "no-cache",
-    "Host": "us-central1-prova-korok.cloudfunctions.net",
-    "Accept-Encoding": "gzip, deflate",
-    "Content-Length": "0",
-    "Connection": "keep-alive",
-    "cache-control": "no-cache"
-  },
-  "processData": false,
-  "data": ""
-}
+  // Descrição: Retorna um objeto contendo o usuário da id indicada.
+  function procurarId(id) {
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/" + id,
+      "method": "GET",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "/",
+        "Cache-Control": "no-cache",
+        //    "Host": "us-central1-prova-korok.cloudfunctions.net",
+        //   "Accept-Encoding": "gzip, deflate",
+        //   "Connection": "keep-alive",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": ""
+    }
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
+    $.ajax(settings).done(function (response) {
+      document.getElementById('nome_busca').innerHTML = response.nome
+      document.getElementById('email_busca').innerHTML = response.email
 
-  window.location.reload();
-  alert('Usuário excluido com sucesso')
+    });
+  }
 
-});
-}
+  //Deleta o usuário indicado pela ID.
+  function deletUser(id) {
+    var settings = {
+      "async": false,
+      "crossDomain": true,
+      "url": "https://us-central1-prova-korok.cloudfunctions.net/api/users/" + id,
+      "method": "DELETE",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "/",
+        "Cache-Control": "no-cache",
+        "Host": "us-central1-prova-korok.cloudfunctions.net",
+        "Accept-Encoding": "gzip, deflate",
+        "Content-Length": "0",
+        "Connection": "keep-alive",
+        "cache-control": "no-cache"
+      },
+      "processData": false,
+      "data": ""
+    }
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+
+      window.location.reload();
+      alert('Usuário excluido com sucesso')
+
+    });
+  }
 
 </script>
 
