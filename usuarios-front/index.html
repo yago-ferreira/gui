@@ -17,30 +17,49 @@
 
 
 <div class="container">
-  <!-- Painel buscar usuário por id. Já funciona,retornando no console -->
-  
+  <!-- Painel buscar usuário por id. Já funciona,retornando no console //-->
     <div id="divBusca">
       <input type="text" id="txtBusca" placeholder="Digite o id do usuário..."/>
       <button id="btnBusca" class="btn btn-primary btn-sm"
-      onclick="procurarId(document.getElementById('txtBusca').value)" data-toggle="modal" data-target="#ExemploModalCentralizado">Buscar</button>
+      onclick="procurarId(document.getElementById('txtBusca').value)" 
+      data-toggle="modal" data-target="#ModalBuscar"
+      >Buscar</button>
     </div>
-<!-- Chamando modals da busca do usuário-->
-<!-- Modal -->
-<div class="modal fade" id="ExemploModalCentralizado" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+    
+<!-- Chamando modal da busca do usuário
+ 
+  
+  //-->
+<div class="modal fade" id="ModalBuscar" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true" >
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="TituloModalCentralizado">Título do modal</h5>
+        <h5 class="modal-title" id="TituloModalCentralizado">informações do usuário:</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+        <!-- Apresentando dados no Modal -->
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Email</th>
+                </tr>
+              </thead>
+              <tbody id ="procurarId">
+                <tr>
+                  <th id=""  scope="row">1</th>
+                  <td id="" >test</td>
+                  <td id="">test@test</td>
+              </tbody>
+            </table>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar mudanças</button>
       </div>
     </div>
   </div>
@@ -301,6 +320,8 @@ var settings = {
 
 $.ajax(settings).done(function (response) {
   console.log(response);
+
+
 });
 }
 
